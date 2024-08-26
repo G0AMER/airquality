@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "772702756793",
+    "firebase_url": "https://myproject-334f7-default-rtdb.firebaseio.com",
+    "project_id": "myproject-334f7",
+    "storage_bucket": "myproject-334f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772702756793:android:a8d71b06b8573ef53f2068",
+        "android_client_info": {
+          "package_name": "com.example.worldwide_weather_watcher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772702756793-d6u360cp8v1sii8e856avt1q5hda2svm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBizvVVpLI3d1u0iVXRVkp12Zm9UlwPptg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772702756793-d6u360cp8v1sii8e856avt1q5hda2svm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772702756793:android:2eb7f7b76a85202f3f2068",
+        "android_client_info": {
+          "package_name": "com.myproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772702756793-d6u360cp8v1sii8e856avt1q5hda2svm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBizvVVpLI3d1u0iVXRVkp12Zm9UlwPptg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772702756793-d6u360cp8v1sii8e856avt1q5hda2svm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
