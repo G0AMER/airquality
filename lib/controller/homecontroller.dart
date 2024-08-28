@@ -1,9 +1,12 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 //import '../model/currentask.dart' as model;
 import 'package:logger/logger.dart';
 import 'package:smart_srrigation/constants.dart';
 import 'package:smart_srrigation/model/User.dart';
+
+import '../main.dart';
 
 class HomeController extends GetxController {
   final databaseRef =
@@ -35,6 +38,7 @@ class HomeController extends GetxController {
     // fetchusername();
     getusername();
     fetchSystemData();
+    getemail();
     //storedata();
     // ever(waterneed, storedata());
 
@@ -55,6 +59,14 @@ class HomeController extends GetxController {
     User us = User.fromSnap(c);
     username.value = us.name;
     //   print('${username}+username');
+  }
+
+  getemail() async {
+    var uid = firebaseAuth.currentUser!.uid;
+    var c = await firestore.collection('users').doc(uid).get();
+    User us = User.fromSnap(c);
+
+    return us.email;
   }
 
 /*  Future<void> _showNotification(double co2Level) async {
@@ -81,12 +93,12 @@ class HomeController extends GetxController {
     );
   }*/
 
-  fetchSystemData() async {
+  Future<void> fetchSystemData() async {
     final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
     DatabaseReference readingsRef = databaseReference.child('Senor');
 
     try {
-      readingsRef.onValue.listen((event) {
+      readingsRef.onValue.listen((event) async {
         final readingsData = event.snapshot.value;
         List<Map<String, dynamic>> sensorDataList = [];
 
@@ -124,7 +136,9 @@ class HomeController extends GetxController {
             logger.d("latest data: $latestData");
             if (latestData[0]["CO2"] > 1000) {
               print("DANGER!!!!");
-              //_showNotification(latestData[0]["CO2"]);
+              String email = await getemail();
+              sendEmail(username.toString(), email, latestData[0]["CO2"]);
+              showNotification(latestData[0]["CO2"]);
             }
           } else {
             latestData = [];
@@ -137,6 +151,61 @@ class HomeController extends GetxController {
     } catch (e) {
       logger.e("Error fetching sensor data: $e");
     }
+  }
+
+  Future<void> showNotification(double co2Level) async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'high_co2_channel', // Channel ID
+      'High CO2 Alerts', // Channel name
+      channelDescription: 'Notification for high CO2 levels',
+      // Channel description
+      importance: Importance.max,
+      priority: Priority.high,
+      showWhen: true,
+    );
+    const NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+
+    // Create an instance of your notification.
+    var notification = flutterLocalNotificationsPlugin.show(
+      0,
+      'High CO2 Level Alert',
+      'Current CO2 Level: ${co2Level.toStringAsFixed(2)} ppm',
+      platformChannelSpecifics,
+      payload: 'High CO2 Alert',
+    );
+
+    // When the notification is tapped, open the file.
+    flutterLocalNotificationsPlugin
+        .getNotificationAppLaunchDetails()
+        .then((details) {});
+
+    await notification;
+  }
+
+  Future<void> _showNotification(double co2Level) async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'high_co2_channel', // Channel ID
+      'High CO2 Alerts', // Channel name
+      channelDescription: 'Notification for high CO2 levels',
+      // Channel description
+      importance: Importance.max,
+      priority: Priority.high,
+      showWhen: true,
+    );
+
+    const NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      'High CO2 Level Alert',
+      'Current CO2 Level: ${co2Level.toStringAsFixed(2)} ppm',
+      platformChannelSpecifics,
+      payload: 'High CO2 Alert',
+    );
   }
 
 // fetchtaskdata() async {

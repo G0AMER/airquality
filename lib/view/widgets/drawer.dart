@@ -45,23 +45,23 @@ class DrawerScreen extends StatelessWidget {
                           width: 70,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 9),
+                          padding: const EdgeInsets.only(top: 0),
                           child: Row(
                             children: [
                               const Text(
                                 "Hi,",
                                 style: TextStyle(
-                                    fontSize: 36, // color: Colors.white,
+                                    fontSize: 25, // color: Colors.white,
                                     fontWeight: FontWeight.w400),
                               ),
-                              Lottie.asset('assets/hello.json', height: 35),
+                              Lottie.asset('assets/hello.json', height: 25),
                             ],
                           ),
                         ),
                         Text(
                           "$username",
                           style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w800),
+                              fontSize: 20, fontWeight: FontWeight.w800),
                         )
                       ],
                     ),
@@ -80,6 +80,7 @@ class DrawerScreen extends StatelessWidget {
                       Text(
                         "Home",
                         style: TextStyle(
+                          fontSize: 10,
                           color: Colors.lightBlueAccent,
                         ),
                       ),
@@ -132,7 +133,7 @@ class DrawerScreen extends StatelessWidget {
                           width: 3,
                         ),
                         Text("About Us",
-                            style: TextStyle(//color: Colors.white,
+                            style: TextStyle(fontSize: 10 //color: Colors.white,
                                 ))
                       ],
                     )),
@@ -153,6 +154,7 @@ class DrawerScreen extends StatelessWidget {
                         Text(
                           "LogOut",
                           style: TextStyle(
+                              fontSize: 10,
                               color: Color.fromARGB(255, 244, 52, 38)),
                         )
                       ],

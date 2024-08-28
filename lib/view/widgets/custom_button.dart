@@ -1,10 +1,14 @@
-import 'package:smart_srrigation/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_srrigation/constants.dart';
 
 class CustomButton extends StatelessWidget {
   void Function()? ontap;
   final String title;
-  CustomButton({super.key, this.ontap, required this.title});
+  CustomButton(
+      {super.key,
+      this.ontap,
+      required this.title,
+      CircularProgressIndicator? child});
 
   @override
   Widget build(BuildContext context) {

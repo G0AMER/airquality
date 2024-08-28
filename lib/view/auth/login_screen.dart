@@ -117,13 +117,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Text(
                       "Air Quality\nSystem",
                       style: TextStyle(
-                        fontSize: 35,
+                        fontSize: 33,
                         //fontWeight: FontWeight.w600,
                         color: Colors.lightBlueAccent,
                       ),
                     ),
                     Lottie.asset('assets/plant_walk.json',
-                        height: 81, width: 62),
+                        height: 79, width: 62),
                     //  ),
                   ],
                 ),
@@ -220,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Text(
                       'Don\'t have an account? ',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 19,
                       ),
                     ),
                     InkWell(
@@ -231,7 +231,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         'Register',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 19,
                             color: color4,
                             fontWeight: FontWeight.w500),
                       ),

@@ -1,9 +1,9 @@
-import 'package:smart_srrigation/view/auth/singup_screen_admin.dart';
-import 'package:smart_srrigation/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:smart_srrigation/constants.dart';
+import 'package:smart_srrigation/view/auth/singup_screen_admin.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});
@@ -138,7 +138,7 @@ class _DashScreenAdminState extends State<AdminScreen> {
         children: [
           const Positioned(
             bottom: 16.0,
-            left: 16.0,
+            left: 40.0,
             child: FloatingActionButton(
               onPressed: _logout,
               child: Icon(Icons.logout),
@@ -146,7 +146,7 @@ class _DashScreenAdminState extends State<AdminScreen> {
           ),
           Positioned(
             bottom: 16.0,
-            right: 16.0,
+            right: 10.0,
             child: FloatingActionButton(
               onPressed: _addUser,
               child: const Icon(Icons.add),

@@ -1,5 +1,5 @@
-import 'package:smart_srrigation/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_srrigation/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 //import 'mater';
@@ -38,7 +38,7 @@ class AboutUs extends StatelessWidget {
             children: [
               const SizedBox(height: 8),
               Text(
-                'PFA(Smart Irrigation)',
+                'AirQuality',
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(height: 16),
@@ -48,7 +48,7 @@ class AboutUs extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'Established in 2023-2024 by a team of college friends, we take pride in our ability to address irrigation issues and minimize water wastage in agricultural processes through the utilization of the fuzzy logic and machine learning , which predicts the minimum amount of water required for irrigation.',
+                'Established in 2024-2025 by a team of college friends, we take pride in our ability to design a system to continuously assess and analyze the air within enclosed spaces, ensuring it is safe and healthy for occupants. By tracking levels of pollutants such as carbon dioxide, volatile organic compounds, particulate matter, and humidity, the system helps identify potential hazards that could affect well-being and productivity. The data collected can be used to improve ventilation, manage air purification systems, and take proactive measures to maintain optimal indoor air quality, ultimately protecting the health of individuals and enhancing overall comfort.',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(height: 27),
@@ -88,16 +88,16 @@ class AboutUs extends StatelessWidget {
                       const SizedBox(height: 8),
                       const ListTile(
                         leading: Icon(Icons.location_on),
-                        title: Text('ENIS'),
-                        subtitle: Text('SFAX, TUNISIA'),
+                        title: Text('Hydatis'),
+                        subtitle: Text('Tunis, TUNISIA'),
                       ),
                       const ListTile(
                         leading: Icon(Icons.phone),
-                        title: Text('+216 -- --- ---'),
+                        title: Text('+216 36 21 64 06'),
                       ),
                       const ListTile(
                         leading: Icon(Icons.email),
-                        title: Text('ZED@ZED.ZED'),
+                        title: Text('contact@hydatis.com'),
                       ),
                     ],
                   )),
@@ -122,20 +122,20 @@ class AboutUs extends StatelessWidget {
                           leading: const Icon(Icons.link),
                           title: const Text('Facebook'),
                           onTap: () async {
-                            await launchUrl(
-                                Uri.parse('https://www.facebook.com'));
+                            await launchUrl(Uri.parse(
+                                'https://www.facebook.com/hydatis.world/'));
                           }),
                       ListTile(
                         leading: const Icon(Icons.link),
-                        title: const Text('Twitter'),
-                        onTap: () => launchUrl(
-                            Uri.parse('https://www.twitter.com/')),
+                        title: const Text('Linkedin'),
+                        onTap: () => launchUrl(Uri.parse(
+                            'https://www.linkedin.com/company/hydatis/')),
                       ),
                       ListTile(
                         leading: const Icon(Icons.link),
                         title: const Text('Instagram'),
-                        onTap: () => launchUrl(
-                            Uri.parse('https://www.instagram.com/')),
+                        onTap: () => launchUrl(Uri.parse(
+                            'https://www.instagram.com/hydatis.world/')),
                       ),
                     ],
                   )),

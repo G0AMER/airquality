@@ -27,7 +27,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //
-    List<String> crops = ["Overview", "Potato", "Wheat", "Valves"];
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(60),

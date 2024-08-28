@@ -1,10 +1,10 @@
-import 'package:smart_srrigation/constants.dart';
-import 'package:smart_srrigation/view/widgets/custom_button.dart';
-import 'package:smart_srrigation/view/widgets/text_input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:rive/rive.dart';
+import 'package:smart_srrigation/constants.dart';
+import 'package:smart_srrigation/view/widgets/custom_button.dart';
+import 'package:smart_srrigation/view/widgets/text_input_field.dart';
 
 class SignUpScreenAdmin extends StatefulWidget {
   const SignUpScreenAdmin({super.key});
@@ -22,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreenAdmin> {
   late Artboard? artboard;
   late SMINumber looknum;
   late StateMachineController? stateMachineController;
-  late bool _isQuantityOnlyPlan = false;
+
   var options = [
     'Admin',
     'User',
@@ -217,30 +217,7 @@ class _SignUpScreenState extends State<SignUpScreenAdmin> {
                   ),
                 ),
                 // Radio buttons for plan options
-                ListTile(
-                  title: const Text('Quantity Only Plan'),
-                  leading: Radio(
-                    value: false,
-                    groupValue: _isQuantityOnlyPlan,
-                    onChanged: (value) {
-                      setState(() {
-                        _isQuantityOnlyPlan = value as bool;
-                      });
-                    },
-                  ),
-                ),
-                ListTile(
-                  title: const Text('Quantity and Quality Plan'),
-                  leading: Radio(
-                    value: true,
-                    groupValue: _isQuantityOnlyPlan,
-                    onChanged: (value) {
-                      setState(() {
-                        _isQuantityOnlyPlan = value as bool;
-                      });
-                    },
-                  ),
-                ),
+
                 const SizedBox(
                   height: 0,
                 ),

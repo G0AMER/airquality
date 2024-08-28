@@ -35,7 +35,7 @@ class LowerTabBar extends StatelessWidget {
             "Air Quality",
             style: TextStyle(
               color: Color.fromARGB(255, 38, 38, 38),
-              fontSize: 30,
+              fontSize: 25,
             ),
           ),
           Lottie.asset('assets/plant_walk.json', height: 108, width: 90),

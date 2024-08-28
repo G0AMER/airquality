@@ -1,31 +1,32 @@
+import 'dart:async';
+
+import 'package:emailjs/emailjs.dart' as EmailJS;
+import 'package:emailjs/emailjs.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
-//import 'package:agri_app/view/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'package:smart_srrigation/SplashScreen.dart';
-import 'package:smart_srrigation/controller/authcontroller.dart';
 
-// const AndroidNotificationChannel channel = AndroidNotificationChannel(
-//     'high_importance_channel', // id
-//     'High Importance Notifications', // title
-//     description:
-//         'This channel is used for important notifications.', // description
-//     importance: Importance.high,
-//     playSound: true);
+import 'SplashScreen.dart';
+import 'controller/authcontroller.dart';
 
-// final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-//     FlutterLocalNotificationsPlugin();
-
-// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-//   print('A bg message just showed up :  ${message.messageId}');
-// }
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+Future<void> initNotifications() async {
+  const AndroidInitializationSettings androidInitializationSettings =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+  final InitializationSettings initializationSettings =
+      InitializationSettings(android: androidInitializationSettings);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //await _initializeNotifications();
+  await initNotifications();
   if (kIsWeb) {
     await Firebase.initializeApp(
         options: const FirebaseOptions(
@@ -41,18 +42,6 @@ void main() async {
     await Firebase.initializeApp();
   }
 
-  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-  // await flutterLocalNotificationsPlugin
-  //     .resolvePlatformSpecificImplementation<
-  //         AndroidFlutterLocalNotificationsPlugin>()
-  //     ?.createNotificationChannel(channel);
-
-  // await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-  //   alert: true,
-  //   badge: true,
-  //   sound: true,
-  // );
   Get.put(AuthController()); // Initialisation du contrôleur AuthController
   runApp(const MyApp());
 }
@@ -78,5 +67,29 @@ class MyApp extends StatelessWidget {
         home: const Splashscreen(),
       ),
     );
+  }
+}
+
+void sendEmail(String customerName, String clientEmail, double co2value) async {
+  try {
+    await EmailJS.send(
+      'service_nng7pc7',
+      'template_nx82vyj',
+      {
+        'customer_name': customerName,
+        'client_email': clientEmail,
+        'co2value': co2value.toString(),
+      },
+      const Options(
+        publicKey: '2Tgf8fa4cu8rnU_cC',
+        privateKey: 'TAnRj-iSyjm_ECLSZxj9t',
+      ),
+    );
+    print('SUCCESS!');
+  } catch (error) {
+    if (error is EmailJSResponseStatus) {
+      print('ERROR... ${error.status}: ${error.text}');
+    }
+    print(error.toString());
   }
 }

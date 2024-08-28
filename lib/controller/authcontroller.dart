@@ -133,8 +133,6 @@ class AuthController extends GetxController {
             email: email, password: password);
         Get.offAll(const LoginScreen());
         // Determine plan based on radio button selection
-
-        bool desactivated = true;
         //  String downloadurl = await _uploadToStorage(image);
         Get.offAll(const LoginScreen());
 
@@ -160,7 +158,7 @@ class AuthController extends GetxController {
     }
   }
 
-  void loginUser(String email, String password,
+  Future<int> loginUser(String email, String password,
       {bool rememberPassword = false}) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
@@ -195,6 +193,7 @@ class AuthController extends GetxController {
     } catch (e) {
       Get.snackbar('Error Logging in', e.toString());
     }
+    return 0;
   }
 
   Future<void> _storeCredentials(String email, String password) async {
